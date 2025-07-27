@@ -1,0 +1,14 @@
+{
+  "name": "floating-timer",
+  "version": "1.0.0",
+  "description": "A floating timer application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^28.1.0"
+  }
+} 

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Floating Timer</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgba(33, 33, 33, 0.95);
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            -webkit-app-region: drag;
+            user-select: none;
+        }
+
+        .container {
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .window-controls {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            display: flex;
+            gap: 5px;
+            -webkit-app-region: no-drag;
+        }
+
+        .window-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: transparent;
+            transition: all 0.2s ease;
+        }
+
+        .window-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .minimize-btn {
+            background-color: #FFBD2E;
+        }
+
+        .close-btn {
+            background-color: #FF5F56;
+        }
+
+        .timer-display {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-around;
+            -webkit-app-region: no-drag;
+            margin-bottom: 15px;
+        }
+
+        .timer-options {
+            display: none;
+            -webkit-app-region: no-drag;
+            margin-bottom: 15px;
+        }
+
+        .timer-options.active {
+            display: block;
+        }
+
+        .time-presets {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 10px;
+        }
+
+        .custom-time {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+        }
+
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .reset {
+            background-color: #f44336;
+        }
+
+        .mode {
+            background-color: #2196F3;
+        }
+
+        .preset-btn {
+            background-color: #607D8B;
+            padding: 5px 10px;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #9E9E9E;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="window-controls">
+        <button class="window-btn minimize-btn" id="minimizeBtn">-</button>
+        <button class="window-btn close-btn" id="closeBtn">×</button>
+    </div>
+    <div class="container">
+        <div class="title">Floating Timer</div>
+        <div class="timer-display" id="timer">00:00:00</div>
+        
+        <div class="timer-options" id="timerOptions">
+            <div class="time-presets">
+                <button class="preset-btn" data-minutes="30">30 min</button>
+                <button class="preset-btn" data-minutes="60">1 hour</button>
+                <button class="preset-btn" data-minutes="120">2 hours</button>
+            </div>
+            <div class="custom-time">
+                <input type="number" id="hours" min="0" max="23" value="0" placeholder="H">
+                <span>:</span>
+                <input type="number" id="minutes" min="0" max="59" value="0" placeholder="M">
+                <span>:</span>
+                <input type="number" id="seconds" min="0" max="59" value="0" placeholder="S">
+            </div>
+        </div>
+
+        <div class="controls">
+            <button id="startBtn">Start</button>
+            <button id="resetBtn" class="reset">Reset</button>
+            <button id="modeBtn" class="mode">Switch Mode</button>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+</html> 
